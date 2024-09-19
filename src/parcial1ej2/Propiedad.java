@@ -18,6 +18,11 @@ public Propiedad(String propietario, String calle, String ubicacion) {
 	this.ubicacion = ubicacion;
 }
 
+public Propiedad() {
+	
+}
+
+
 
 
 public String getpropietario() {
