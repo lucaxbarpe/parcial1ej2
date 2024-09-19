@@ -7,7 +7,7 @@ private String propietario;
 private String calle;
 private String ubicacion;
 private double metros2;
-private String disponible;
+private boolean disponible = true;
 
 
 
@@ -66,7 +66,7 @@ public void setMetros2(int metros2) {
 	this.metros2 = metros2;
 }
 
-public void Estadisponible() {
+public void Estadiponible() {
 	
 	String respuesta;
 	
@@ -74,22 +74,31 @@ public void Estadisponible() {
 	
 	if (respuesta.equalsIgnoreCase("si")) {
 		
-		this.disponible = "si";
+		this.disponible = true;
 		this.propietario = null;
 		JOptionPane.showMessageDialog(null, "la propiedad esta disponible para su compra");
 	} else {
-		this.disponible = "no";
+		this.disponible = false;
 		String propietarioactual;
 		propietarioactual = JOptionPane.showInputDialog("introduzca el nombre del propietario");
 		this.propietario = propietarioactual;
 		JOptionPane.showMessageDialog(null, "la propiedad no esta disponible para la compra, pertenece a " + propietarioactual);
+		this.disponible = false;
 	}
 	
 }
 
+public void disponibilidad(){
+	if (this.disponible == true) {
+		JOptionPane.showMessageDialog(null, "la propiedad esta disponible para su compra");
+	} else {
+		JOptionPane.showMessageDialog(null, "la propiedad no esta disponible para la compra, pertenece a " + this.propietario);
+	}
+}
+
 
 public void Terminaralquiler() {
-	this.disponible = "si";
+	this.disponible = true;
 	this.propietario = null;
 	
 	
@@ -104,8 +113,20 @@ public void Calcularprecio() {
 	metros2totales = Double.parseDouble(JOptionPane.showInputDialog("cuantos metros cuadrados tiene la propiedad"));
 	preciofinal = metros2totales * precioxmetro2;
 	
-	JOptionPane.showMessageDialog(null, "la propiedad tiene un precio de " + preciofinal + "$");
-
+	String zonadepto = JOptionPane.showInputDialog("¿en que barrio esta el departamento?" + "\n"
+	+ "puerto madero" + "\n" + "recoleta" + "\n" + "otro");
+	
+	if (zonadepto.equalsIgnoreCase("puerto madero")) {
+		preciofinal = preciofinal * 12;
+	} else {
+		if (zonadepto.equalsIgnoreCase("recoleta")) {
+			preciofinal = preciofinal * 8;
+		} else {
+			preciofinal = preciofinal *2;
+		}
+	}
+	  
+JOptionPane.showMessageDialog(null, "el precio final del departamento es de " + preciofinal + "$");
 	
 	
 }
