@@ -44,7 +44,7 @@ class main {
 				propiedad1.Calcularprecio();
 	break;
 			case 5:
-	
+				JOptionPane.showMessageDialog(null, "cerrando sistema...");
 	break;
 			default:
 				break;
@@ -54,7 +54,7 @@ class main {
 			
 			
 			
-		} while (opcion !=4);
+		} while (opcion !=5);
 		
 		
 		
